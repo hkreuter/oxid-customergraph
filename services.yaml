@@ -1,0 +1,14 @@
+services:
+
+    _defaults:
+        public: false
+        autowire: true
+
+    Hkreuter\GraphQL\CustomerGraph\:
+        resource: 'src/*'
+        exclude: 'src/**/{Exception}'
+        public: true
+
+    Hkreuter\GraphQL\CustomerGraph\Shared\Service\NamespaceMapper:
+        class: Hkreuter\GraphQL\CustomerGraph\Shared\Service\NamespaceMapper
+        tags: ['graphql_namespace_mapper']

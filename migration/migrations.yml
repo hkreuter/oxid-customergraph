@@ -1,0 +1,4 @@
+name: CustomerGraph migrations
+migrations_namespace: Hkreuter\GraphQL\CustomerGraph\Migrations
+table_name: oxmigrations_customergraph
+migrations_directory: data

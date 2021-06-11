@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "hkreuter/oxid-customergraph",
+        "version": "1.0.0",
+        "source": {
+            "url": "./",
+            "type": "git",
+            "reference": "master"
+        }
+    }
+}
