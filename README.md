@@ -28,14 +28,14 @@ so that the extra field can be queried in customer query.
 ```graphql
 type Customer
 {
-    ...
-    aboutme: String!
+    // ...
+    aboutMe: String!
 }
 
-type Query {
-    setAboutMe (
-        aboutme: String
-    ):  Customer!
+type Mutation {
+    CustomerAboutMe (
+        aboutMe: String
+    ): Customer!
 }
 ```
 

@@ -38,17 +38,17 @@ final class Customer
     }
 
     /**
-     * @Mutation
+     * @Mutation()
      * @Logged()
      *
      * AboutMe desciption can have a maximum of 256 characters.
      */
-    public function setAboutMe(?string $content = null): CustomerDataType
+    public function CustomerAboutMe(?string $aboutMe = null): CustomerDataType
     {
         $customer = $this->storefrontCustomerService->customer(
             $this->authenticationService->getUserId()
         );
 
-        return $this->customerService->setAboutMe($customer, $content);
+        return $this->customerService->setAboutMe($customer, $aboutMe);
     }
 }
