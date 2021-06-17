@@ -9,23 +9,26 @@ declare(strict_types=1);
 
 namespace Hkreuter\GraphQL\CustomerGraph\Customer\Infrastructure;
 
+use Hkreuter\GraphQL\CustomerGraph\Customer\Exception\NotFound;
 use OxidEsales\Eshop\Application\Model\User as EshopModelUser;
 use OxidEsales\GraphQL\Storefront\Customer\DataType\Customer as CustomerDataType;
 
 final class Customer
 {
-    public function updateCustomer(CustomerDataType $customer, string $data): CustomerDataType
+    public function setAboutMe(string $customerId, string $data): CustomerDataType
     {
-        /** @var EshopModelUser $customerModel */
-        $customerModel = $customer->getEshopModel();
+        /** @var EshopModelUser */
+        $customer = oxNew(EshopModelUser::class);
 
-        $customerModel->assign(
-            [
-                'ABOUTME' => $data,
-            ]
-        );
-        $customerModel->save();
+        if (!$customer->load($customerId)) {
+            throw NotFound::notFoundById($customerId);
+        }
 
-        return $customer;
+        $customer->assign([
+            'ABOUTME' => $data,
+        ]);
+        $customer->save();
+
+        return new CustomerDataType($customer);
     }
 }
