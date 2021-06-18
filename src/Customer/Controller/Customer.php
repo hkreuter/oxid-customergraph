@@ -37,7 +37,7 @@ final class Customer
      *
      * AboutMe desciption can have a maximum of 256 characters.
      */
-    public function CustomerAboutMe(?string $aboutMe = null): CustomerDataType
+    public function customerAboutMe(?string $aboutMe = null): CustomerDataType
     {
         return $this->customerService->setAboutMe(
             $this->authenticationService->getUserId(),
