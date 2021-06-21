@@ -21,7 +21,7 @@ final class CustomerExtend
     /**
      * @Field()
      */
-    public function aboutme(CustomerDataType $customer): string
+    public function aboutMe(CustomerDataType $customer): string
     {
         return (string) $customer->getEshopModel()->getFieldData('aboutme');
     }
