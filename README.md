@@ -5,6 +5,10 @@ OXID eShop GraphQL ExtendType Example
 
 [![Build Status](https://img.shields.io/travis/com/hkreuter/oxid-customergraph/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.com/hkreuter/oxid-customergraph) [![PHP Version](https://img.shields.io/packagist/php-v/hkreuter/oxid-customergraph.svg?style=for-the-badge)](https://github.com/hkreuter/oxid-customergraph) [![Stable Version](https://img.shields.io/packagist/v/hkreuter/oxid-customergraph.svg?style=for-the-badge&label=latest)](https://packagist.org/packages/hkreuter/oxid-customergraph)
 
+## Compatibility
+
+* b-6.4.x module branch is compatible with OXID eShop compilation 6.4
+
 ## Usage
 
 This assumes you have the OXID eShop up and running and installed and activated the `oxid-esales/graphql-base`

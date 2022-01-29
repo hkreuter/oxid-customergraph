@@ -17,20 +17,21 @@
         }
     },
     "require": {
-        "php": "^7.1",
-        "oxid-esales/graphql-storefront": "^1.0.0"
+        "php": "^7.4 | ^8.0",
+        "oxid-esales/graphql-storefront": "^2.0.0",
+        "oxid-esales/oxideshop-doctrine-migration-wrapper": "^v3.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5.20|^8.5|^9",
         "friendsofphp/php-cs-fixer": "^2.18.2",
         "php-parallel-lint/php-parallel-lint": "^1.1",
         "phpstan/phpstan": "^0.12.26",
-        "oxid-esales/oxideshop-ce": "^6.5",
+        "oxid-esales/oxideshop-ce": "^v6.10.0",
         "oxid-esales/oxideshop-unified-namespace-generator": "^2.0",
-        "qossmic/deptrac-shim": "^0.6.0|^0.9.0",
-        "codeception/module-rest": "*",
-        "codeception/module-phpbrowser": "*",
-        "codeception/module-db": "*"
+        "qossmic/deptrac-shim": "^0.9.0|^0.10.0",
+        "codeception/module-rest": "^1.4.2",
+        "codeception/module-phpbrowser": "^1.0.2",
+        "codeception/module-db": "^1.1.0"
     },
     "autoload": {
         "psr-4": {
