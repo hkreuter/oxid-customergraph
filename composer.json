@@ -16,9 +16,13 @@
             "target-directory": "hkreuter/oxid-customergraph"
         }
     },
+    "prefer-stable": true,
+    "prefer-dist": true,
     "require": {
         "php": "^7.4 | ^8.0",
-        "oxid-esales/graphql-storefront": "^2.0.0",
+        "oxid-esales/graphql-base": "^6.0.1",
+        "oxid-esales/graphql-storefront": "^2.0.1",
+        "hkreuter/graphql-upload": "dev-4.1.0-php8",
         "oxid-esales/oxideshop-doctrine-migration-wrapper": "^v3.2.0"
     },
     "require-dev": {

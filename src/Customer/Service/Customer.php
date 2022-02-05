@@ -12,6 +12,7 @@ namespace Hkreuter\GraphQL\CustomerGraph\Customer\Service;
 use Hkreuter\GraphQL\CustomerGraph\Customer\Exception\AboutMeOutOfBounds;
 use Hkreuter\GraphQL\CustomerGraph\Customer\Infrastructure\Customer as CustomerInfrastructure;
 use OxidEsales\GraphQL\Storefront\Customer\DataType\Customer as CustomerDataType;
+use TheCodingMachine\GraphQLite\Types\ID;
 
 final class Customer
 {
@@ -27,7 +28,7 @@ final class Customer
         $this->customerInfrastructure = $customerInfrastructure;
     }
 
-    public function setAboutMe(string $customerId, ?string $content = null): CustomerDataType
+    public function setAboutMe(ID $customerId, ?string $content = null): CustomerDataType
     {
         if (null === $content) {
             $content = '';
@@ -38,7 +39,7 @@ final class Customer
         }
 
         return $this->customerInfrastructure->setAboutMe(
-            $customerId,
+            (string) $customerId,
             $content
         );
     }

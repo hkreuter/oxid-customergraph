@@ -40,7 +40,7 @@ final class Customer
     public function customerAboutMe(?string $aboutMe = null): CustomerDataType
     {
         return $this->customerService->setAboutMe(
-            $this->authenticationService->getUserId(),
+            $this->authenticationService->getUser()->id(),
             $aboutMe
         );
     }

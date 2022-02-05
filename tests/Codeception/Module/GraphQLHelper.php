@@ -13,7 +13,8 @@ use Codeception\Lib\Interfaces\DependsOnModule;
 use Codeception\Module;
 use Codeception\Module\REST;
 use InvalidArgumentException;
-use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Token\Parser;
 use OxidEsales\Facts\Facts;
 use PHPUnit\Framework\AssertionFailedError;
 
@@ -34,7 +35,7 @@ final class GraphQLHelper extends Module implements DependsOnModule
             if (is_file($rootPath . $path)) {
                 exec($rootPath . $path . ' oe:module:activate oe_graphql_base');
                 exec($rootPath . $path . ' oe:module:activate oe_graphql_storefront');
-                exec($rootPath . $path . ' oe:module:activate hkreuter/oxid-admingraph');
+                exec($rootPath . $path . ' oe:module:activate hkreuter/oxid-examplegraph');
             }
         }
     }
@@ -124,11 +125,10 @@ final class GraphQLHelper extends Module implements DependsOnModule
 
     public function seeResponseContainsValidJWTToken(): void
     {
-        $parser = new Parser();
         $token  = $this->grabTokenFromResponse();
 
         try {
-            $parser->parse($token);
+            (new Parser(new JoseEncoder()))->parse($token);
         } catch (InvalidArgumentException $e) {
             throw new AssertionFailedError(sprintf('Not a valid JWT token: %s', $token));
         }
