@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Hkreuter\GraphQL\CustomerGraph\Customer\Exception;
 
 use OxidEsales\GraphQL\Base\Exception\OutOfBounds;
+
 use function sprintf;
 
 final class AboutMeOutOfBounds extends OutOfBounds

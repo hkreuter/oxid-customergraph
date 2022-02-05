@@ -82,7 +82,8 @@ final class GraphQLHelper extends Module implements DependsOnModule
     {
         $this->logoutFromGraphQLApi();
 
-        $query     = 'query ($username: String!, $password: String!) { token (username: $username, password: $password) }';
+        $query     = 'query ($username: String!, $password: String!) ' .
+            '{ token (username: $username, password: $password) }';
         $variables = [
             'username' => $username,
             'password' => $password,

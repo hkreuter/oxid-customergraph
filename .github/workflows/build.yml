@@ -2,13 +2,20 @@ name: CI
 
 on: [push, pull_request]
 
+env:
+    DEFAULT_COMPOSER_FLAGS: --no-interaction --no-ansi --no-progress --no-suggest --prefer-dist --no-plugins
+
 jobs:
     build:
-        runs-on: Ubuntu-20.04
+        runs-on: Ubuntu-latest
         strategy:
             matrix:
-                php: ['7.1', '7.2', '7.3', '7.4']
-                DEPENDENCIES: ['', '--prefer-lowest']
+                php:
+                    - "7.4"
+                    - "8.0"
+                env:
+                    - DEPENDENCIES=""
+                    - DEPENDENCIES=" --prefer-lowest"
         steps:
             - name: Checkout
               uses: actions/checkout@v2
@@ -18,10 +25,6 @@ jobs:
               with:
                   php-version: ${{ matrix.php }}
                   coverage: xdebug
-
-            - name: Downgrade composer
-              if: ${{ matrix.php != '7.4' || env.DEPENDENCIES == ' --prefer-lowest' }}
-              run: composer self-update --1
 
             - name: Get composer cache directory
               id: composer-cache
@@ -34,20 +37,23 @@ jobs:
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                   restore-keys: ${{ runner.os }}-composer-
 
-            - name: Install
-              run: composer install -n --no-plugins $DEPENDENCIES
+            - name: Install dependencies
+              run: composer update $DEFAULT_COMPOSER_FLAGS $DEPENDENCIES
 
             - name: Generated Unified Namespace
               run: ./vendor/bin/oe-eshop-unified_namespace_generator
 
-            - name: Test syntax
+            - name: Syntax Test
+              if: ${{ matrix.php == '8.0' && env.DEPENDENCIES == '' }}
               run: composer test:syntax
-
-            - name: Lint Test
-              run: composer test:lint
-
-            - name: Static Analyzer
-              run:  composer test:static
 
             - name: Unit Tests
               run: composer test:unit
+
+            - name: Static Analyzer
+              if: ${{ matrix.php == '8.0' && env.DEPENDENCIES == '' }}
+              run:  composer test:static
+
+            - name: Deptrac Analyzer
+              if: ${{ matrix.php == '8.0' && env.DEPENDENCIES == '' }}
+              run:  composer test:deptrac

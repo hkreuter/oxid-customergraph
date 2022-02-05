@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Hkreuter\GraphQL\CustomerGraph\Customer\Exception;
 
 use OxidEsales\GraphQL\Base\Exception\NotFound as BaseNotFound;
+
 use function sprintf;
 
 final class NotFound extends BaseNotFound

@@ -16,7 +16,9 @@ layers:
     collectors:
       - type: className
         regex: .*GraphQL.*Repository.*
-  - name: Legacy
+      - type: className
+        regex: .*GraphQL.*Infrastructure.*
+  - name: Core
     collectors:
       - type: directory
         regex: .*vendor/oxid-esales/oxideshop-ce/source/.*
@@ -28,5 +30,5 @@ ruleset:
   Service:
     - Infrastructure
   Infrastructure:
-    - Legacy
-  Legacy: ~
+    - Core
+  Core: ~
