@@ -223,7 +223,7 @@ jobs:
               with:
                   args: >
                       -Dsonar.organization=hkreuter
-                      -Dsonar.projectKey=TODO
+                      -Dsonar.projectKey=hkreuter_oxid-customergraph
                       -Dsonar.projectVersion=0.1.0
                       -Dsonar.sources=src
                       -Dsonar.tests=tests
